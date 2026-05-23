@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNIQUE NPC :: RPG EDITION</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="heart" id="logo-heart"></span>UNIQUE NPC</div>
+    <div class="tabs">
+      <button class="tab active" data-view="catalog">КВЕСТЫ</button>
+      <button class="tab" data-view="profile">ГЕРОЙ</button>
+    </div>
+  </div>
+</header>
+
+<main class="view active" id="view-catalog">
+<div class="wrap">
+  <div class="hero">
+    <h1>UNIQUE NPC</h1>
+    <div class="sub">ты — самый уникальный персонаж</div>
+
+    <div class="rpgscreen">
+      <div class="label">★ RPG EDITION ★</div>
+      <div class="scene">
+        <span class="sparkle s1">✦</span>
+        <span class="sparkle s2">✦</span>
+        <span class="sparkle s3">★</span>
+        <div class="ground"></div>
+        <div class="hero-sprite" id="scene-hero"></div>
+      </div>
+    </div>
+
+    <div class="dialogue">
+      <div class="who">ГЕРОИНЯ</div>
+      <div>Ни магии, ни читов, ни второй жизни. Только ты — самый уникальный NPC в этом мире. Открывай этапы своей жизни как достижения и проходи свою главную игру.</div>
+      <span class="arrow">&#9660;</span>
+    </div>
+  </div>
+
+  <div class="hud">
+    <div class="cell"><div class="k">УРОВЕНЬ</div><div class="v" id="s-level">1</div><div class="bar"><i id="s-lvlbar" style="width:0%"></i></div><div class="lvlhint" id="s-lvlhint">0 / 1000 XP</div></div>
+    <div class="cell"><div class="k">ВОЗРАСТ</div><div class="v"><input id="age-input" type="number" min="0" max="100" placeholder="--" />&#8202;<small>/ 100</small></div><div class="bar blue"><i id="s-agebar" style="width:0%"></i></div></div>
+    <div class="cell"><div class="k">ПОЛУЧЕНО</div><div class="v"><span id="s-unlocked">0</span><small>/<span id="s-total">0</span></small></div></div>
+    <div class="cell"><div class="k">ОПЫТ</div><div class="v" id="s-xp">0<small> XP</small></div></div>
+    <div class="cell"><div class="k">ПРОЖИТО</div><div class="v" id="s-pct">0<small>%</small></div></div>
+  </div>
+
+  <div class="toolbar">
+    <button class="chip active" data-cat="all">ВСЕ</button>
+    <button class="chip" data-cat="Детство">ДЕТСТВО</button>
+    <button class="chip" data-cat="Образование">УЧЁБА</button>
+    <button class="chip" data-cat="Школьные будни">ШКОЛА</button>
+    <button class="chip" data-cat="Карьера">КАРЬЕРА</button>
+    <button class="chip" data-cat="Любовь">ЛЮБОВЬ</button>
+    <button class="chip" data-cat="Семья">СЕМЬЯ</button>
+    <button class="chip" data-cat="Личное">ЛИЧНОЕ</button>
+    <button class="chip" data-cat="Здоровье">ЗДОРОВЬЕ</button>
+    <button class="chip" data-cat="Спорт">СПОРТ</button>
+    <button class="chip" data-cat="Путешествия">ПОЕЗДКИ</button>
+    <button class="chip" data-cat="Финансы">ФИНАНСЫ</button>
+    <button class="chip" data-cat="Быт">БЫТ</button>
+    <button class="chip" data-cat="Дружба">ДРУЖБА</button>
+    <button class="chip" data-cat="Хобби">ХОББИ</button>
+    <button class="chip" data-cat="Легенды">ЛЕГЕНДЫ</button>
+    <div class="spacer"></div>
+    <input class="search" id="search" placeholder="поиск квеста...">
+  </div>
+
+  <div class="addbox" style="display:none">
+    <h4>+ СОЗДАТЬ СВОЙ КВЕСТ</h4>
+    <div class="addrow">
+      <input class="t" id="c-title" placeholder="Название - напр. Пробежал марафон">
+      <input class="d" id="c-desc" placeholder="Описание (необязательно)">
+      <select id="c-cat"><option>Личное</option><option>Образование</option><option>Карьера</option><option>Путешествия</option><option>Здоровье</option><option>Финансы</option></select>
+      <select id="c-rarity"><option value="common">Обычный</option><option value="uncommon">Необычный</option><option value="rare" selected>Редкий</option><option value="epic">Эпический</option><option value="legend">Легендарный</option></select>
+      <button class="btn" id="c-add">ДОБАВИТЬ</button>
+    </div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+</div>
+</main>
+
+<main class="view" id="view-profile">
+<div class="wrap">
+  <div class="pcard">
+    <div class="avatar-box" id="avatar-box"></div>
+    <div class="pinfo" style="flex:1;min-width:240px;">
+      <h2 id="p-name">AZAZEL</h2>
+      <div class="role">УР. <span id="p-glevel">1</span> · ВОЗРАСТ <span id="p-level">--</span> · УНИКАЛЬНЫЙ NPC</div>
+      <div class="role" style="font-size:18px;color:var(--gold);margin-top:-6px;">⚔ <span id="p-acc">Базовый облик</span></div>
+      <div class="badges">
+        <div class="pbadge"><div class="n" id="p-unlocked">0</div><div class="l">КВЕСТОВ</div></div>
+        <div class="pbadge"><div class="n" id="p-xp">0</div><div class="l">ОПЫТА</div></div>
+        <div class="pbadge"><div class="n" id="p-rare">0</div><div class="l">РЕДКИХ+</div></div>
+        <div class="pbadge"><div class="n" id="p-pct">--</div><div class="l">ПРОЖИТО %</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sharelink">
+    <span>ССЫЛКА:</span><code id="p-link">uniquenpc.app/u/azazel</code>
+    <button class="btn" id="p-copy">КОПИРОВАТЬ</button>
+  </div>
+  <div class="section-title">★ ВИТРИНА ГЕРОЯ</div>
+  <div class="grid" id="showcase"></div>
+</div>
+</main>
+
+<div class="toast" id="toast">
+  <div class="ti" id="toast-icon"></div>
+  <div><div class="tt" id="toast-t">QUEST COMPLETE!</div><div class="ts" id="toast-s"></div></div>
+</div>
+
+<footer>UNIQUE NPC :: RPG EDITION :: ПРОГРЕСС ХРАНИТСЯ В БРАУЗЕРЕ</footer>
+<script src="game.js"></script>
+</body>
+</html>
